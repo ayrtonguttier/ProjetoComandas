@@ -1,0 +1,22 @@
+services:
+  sistema:
+    build:
+      context: ./ProjetoComandas
+      dockerfile: ProjetoComandas.View/Dockerfile
+    ports:
+      - 8100:80
+    depends_on:
+      - banco
+  banco:
+    image: mysql:8.0.31
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=db_comandas
+      - MYSQL_USER=usuario
+      - MYSQL_PASSWORD=senhaFortissima
+    ports:
+      - 3306:3306      
+    volumes:
+      - banco_data:/var/lib/mysql
+volumes:
+  banco_data:
