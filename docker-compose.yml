@@ -1,10 +1,11 @@
 services:
   sistema:
     build:
-      context: ./ProjetoComandas
+      context: ./src/ProjetoComandas
       dockerfile: ProjetoComandas.View/Dockerfile
     ports:
       - 8100:80
+      - 1443:443
     depends_on:
       - banco
   banco:
@@ -18,5 +19,6 @@ services:
       - 3306:3306      
     volumes:
       - banco_data:/var/lib/mysql
+      - ./sql:/docker-entrypoint-initdb.d/
 volumes:
   banco_data:

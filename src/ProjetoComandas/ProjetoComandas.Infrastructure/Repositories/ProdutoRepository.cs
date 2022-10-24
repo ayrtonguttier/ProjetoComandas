@@ -1,4 +1,5 @@
-﻿using Dapper;
+﻿using System.Runtime.CompilerServices;
+using Dapper;
 using Microsoft.Extensions.Logging;
 using ProjetoComandas.Application.Data;
 using ProjetoComandas.Application.Data.Repositories;
@@ -7,7 +8,7 @@ using ProjetoComandas.Domain.Entities;
 
 namespace ProjetoComandas.Infrastructure.Repositories
 {
-    public class ProdutoRepository : IProdutoRepository
+    internal class ProdutoRepository : IProdutoRepository
     {
         private readonly ILogger<ProdutoRepository> _logger;
         private readonly IDbConnectionFactory _connectionFactory;
@@ -16,7 +17,7 @@ namespace ProjetoComandas.Infrastructure.Repositories
         {
             this._logger = logger;
             _connectionFactory = connectionFactory;
-        }
+        }   
 
         public Result<Produto> Add(Produto item)
         {

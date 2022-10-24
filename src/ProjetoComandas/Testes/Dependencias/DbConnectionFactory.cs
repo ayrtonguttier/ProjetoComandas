@@ -9,7 +9,7 @@ namespace Testes.Dependencias
     {
         public IDbConnection CreateConnection()
         {
-            return new MySqlConnection("Server=localhost;Database=usuario;Uid=root;Pwd=senhaFortissima;");
+            return new MySqlConnection("Server=localhost;Database=db_comandas;Uid=usuario;Pwd=senhaFortissima;");
         }
     }
 }

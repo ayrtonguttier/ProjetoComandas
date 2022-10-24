@@ -3,7 +3,7 @@ using ProjetoComandas.Domain;
 
 namespace ProjetoComandas.Infrastructure.Repositories
 {
-    public class CategoriaRepository : ICategoriaRepository
+    internal class CategoriaRepository : ICategoriaRepository
     {
         public Result<Domain.Entities.Categoria> Add(Domain.Entities.Categoria item)
         {

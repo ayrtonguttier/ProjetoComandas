@@ -1,0 +1,8 @@
+@model IEnumerable<ProjetoComandas.Domain.Entities.Produto>
+
+@foreach (var produto in Model)
+{
+    <p>
+        @produto.Nome
+    </p>
+}
