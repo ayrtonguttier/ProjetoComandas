@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
-using ProjetoComandas.Infrastructure;
 using System.Data;
+using ProjetoComandas.Application.Data;
+
 
 namespace Testes.Dependencias
 {

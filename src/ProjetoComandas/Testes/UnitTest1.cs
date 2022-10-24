@@ -1,5 +1,5 @@
-using ProjetoComandas.Domain.Produtos;
-using ProjetoComandas.Infrastructure.Produtos.Produto;
+using ProjetoComandas.Domain.Entities;
+using ProjetoComandas.Infrastructure.Repositories;
 using Testes.Dependencias;
 using Xunit.Abstractions;
 

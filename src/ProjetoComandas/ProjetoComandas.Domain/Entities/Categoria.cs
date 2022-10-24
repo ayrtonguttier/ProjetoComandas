@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ProjetoComandas.Domain.Produtos
+﻿namespace ProjetoComandas.Domain.Entities
 {
     public sealed class Categoria
     {
@@ -12,7 +6,6 @@ namespace ProjetoComandas.Domain.Produtos
 
         public Categoria(string nome)
         {
-            this.Id = 10;
             this.Nome = nome;
             this.Produtos = Enumerable.Empty<Produto>();
             this.DataDeCadastro = DateTimeOffset.UtcNow;

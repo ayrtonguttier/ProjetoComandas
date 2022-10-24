@@ -1,9 +1,10 @@
 ﻿using Dapper;
 using Microsoft.Extensions.Logging;
+using ProjetoComandas.Application.Data;
+using ProjetoComandas.Application.Data.Repositories;
 using ProjetoComandas.Domain;
-using ProjetoComandas.Domain.Produtos.Repositories;
 
-namespace ProjetoComandas.Infrastructure.Produtos.Produto
+namespace ProjetoComandas.Infrastructure.Repositories
 {
     public class ProdutoRepository : IProdutoRepository
     {
@@ -15,18 +16,20 @@ namespace ProjetoComandas.Infrastructure.Produtos.Produto
             logger = _logger;
             this.connectionFactory = connectionFactory;
         }
-        public Result<Domain.Produtos.Produto> Add(Domain.Produtos.Produto item)
+
+        public Result<Domain.Entities.Produto> Add(Domain.Entities.Produto item)
         {
-            return this.AddAsync(item).GetAwaiter().GetResult();
+            return AddAsync(item).GetAwaiter().GetResult();
         }
 
-        public async Task<Result<Domain.Produtos.Produto>> AddAsync(Domain.Produtos.Produto item)
+        public async Task<Result<Domain.Entities.Produto>> AddAsync(Domain.Entities.Produto item)
         {
             try
             {
                 using (var connection = connectionFactory.CreateConnection())
                 {
-                    var sql = "INSERT INTO TB_PRODUTO (ID, NOME, CODIGO_BARRAS, PRECO, ID_CATEGORIA, DATA_CADASTRO) VALUES (@ID, @NOME, @CODIGO_BARRAS, @PRECO, @ID_CATEGORIA, @DATA_CADASTRO)";
+                    var sql =
+                        "INSERT INTO TB_PRODUTO (ID, NOME, CODIGO_BARRAS, PRECO, ID_CATEGORIA, DATA_CADASTRO) VALUES (@ID, @NOME, @CODIGO_BARRAS, @PRECO, @ID_CATEGORIA, @DATA_CADASTRO)";
                     await connection.ExecuteAsync(sql, new
                     {
                         @ID = item.Id,
@@ -37,42 +40,42 @@ namespace ProjetoComandas.Infrastructure.Produtos.Produto
                         @DATA_CADASTRO = item.DataDeCadastro
                     });
 
-                    return new Result<Domain.Produtos.Produto>(item);
+                    return new Result<Domain.Entities.Produto>(item);
                 }
             }
             catch (Exception ex)
             {
                 logger.LogError(ex, "Erro ao cadastrar produto");
-                return new Result<Domain.Produtos.Produto>(ex);
+                return new Result<Domain.Entities.Produto>(ex);
             }
         }
 
-        public Result<Domain.Produtos.Produto> Delete(Domain.Produtos.Produto item)
+        public Result<Domain.Entities.Produto> Delete(Domain.Entities.Produto item)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Result<Domain.Produtos.Produto>> DeleteAsync(Domain.Produtos.Produto item)
+        public Task<Result<Domain.Entities.Produto>> DeleteAsync(Domain.Entities.Produto item)
         {
             throw new NotImplementedException();
         }
 
-        public Result<IEnumerable<Domain.Produtos.Produto>> GetAll()
+        public Result<IEnumerable<Domain.Entities.Produto>> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public Task<Result<IEnumerable<Domain.Produtos.Produto>>> GetAllAsync()
+        public Task<Result<IEnumerable<Domain.Entities.Produto>>> GetAllAsync()
         {
             throw new NotImplementedException();
         }
 
-        public Result<Domain.Produtos.Produto> Update(Domain.Produtos.Produto item)
+        public Result<Domain.Entities.Produto> Update(Domain.Entities.Produto item)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Result<Domain.Produtos.Produto>> UpdateAsync(Domain.Produtos.Produto item)
+        public Task<Result<Domain.Entities.Produto>> UpdateAsync(Domain.Entities.Produto item)
         {
             throw new NotImplementedException();
         }

@@ -1,4 +1,4 @@
-﻿namespace ProjetoComandas.Domain.Produtos
+﻿namespace ProjetoComandas.Domain.Entities
 {
     public sealed class Produto
     {

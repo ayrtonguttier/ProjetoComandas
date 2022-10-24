@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ProjetoComandas.Domain;
 
-namespace ProjetoComandas.Domain
+namespace ProjetoComandas.Application.Data
 {
     public interface IRepository<T> where T : class
     {
