@@ -16,7 +16,7 @@ services:
       - MYSQL_USER=usuario
       - MYSQL_PASSWORD=senhaFortissima
     ports:
-      - 3306:3306      
+      - 3307:3306      
     volumes:
       - banco_data:/var/lib/mysql
       - ./sql:/docker-entrypoint-initdb.d/
