@@ -20,5 +20,11 @@ services:
     volumes:
       - banco_data:/var/lib/mysql
       - ./sql:/docker-entrypoint-initdb.d/
+  front:
+    build: ./src/ProjetoComandasFront/projeto-comandas
+    depends_on:
+      - sistema
+    ports:
+      - 8081:80
 volumes:
   banco_data:
